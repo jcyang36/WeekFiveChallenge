@@ -13,7 +13,14 @@
     <title>Title</title>
 </head>
 <body>
-Add Form
+<div class = "container">
+    <header><h1>Make a Transaction</h1> </header>
+</div>
+<div class="container">
+    <form th:action = "@{/logout}" method = "post">
+        <input type="submit" value = "Logout"/>
+
+    </form>
 
 
 <form th:action = "@{/addsubmit}" th:object = "${transaction}" method = "post">
@@ -35,5 +42,7 @@ Add Form
     </div>
     <input type="submit" value = "Submit"/>
 </form>
+
+</div>
 </body>
 </html>

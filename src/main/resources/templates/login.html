@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
@@ -9,43 +10,22 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Spring Security Example</title>
 </head>
 <body>
-<div class="container">
-<header><h1>Transactions</h1>
-
-    <form th:action = "@{/logout}" method = "post">
-    <input type="submit" value = "Logout"/>
-
-</form></header>
-
+<div th:if="${param.error}">
+    Invalid username and password.
 </div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<div class="container">
 
-<div class = "container">
-
-    <table class="table">
-        <th height="80"><h2>History</h2> </th>
-
-
-
-
-        <div th:each = "transaction: ${transactionList}">
-            <tr>
-                <td >  <p th:utext= "${transaction.actionType+' of &nbsp;'+transaction.amount + '&lt;br/&gt;' + transaction.reason} " height="80">Transaction  </p> </td>
-
-
-            </tr>
-
-        </div>
-
-
-    </table>
-
-
-
-
+<form th:action="@{/login}" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
 </div>
 </body>
 </html>

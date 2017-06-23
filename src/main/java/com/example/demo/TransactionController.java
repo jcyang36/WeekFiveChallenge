@@ -43,5 +43,16 @@ public class TransactionController {
         }
 
 
+
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping("/logout")
+    public String goLogout() {
+        return "login";
+    }
+
     }
 
