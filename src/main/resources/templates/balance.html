@@ -26,6 +26,7 @@
             </button>
             <a class="navbar-brand" href="/">Home</a>
             <a class="navbar-brand" href="/add">Make a transaction</a>
+            <a class="navbar-brand" href="/balance">Check balance</a>
             <a class="navbar-brand" href="/logout">Log out</a>
         </div>
 
@@ -50,7 +51,9 @@
             <tr>
                 <td>
 
-                    <p th:utext = "${transaction.balance}">  Result   </p>
+                    <div th:with = "result=${transaction.balance}">
+                        <span th:text = "${result}">Result</span>
+                    </div>
 
 
                 </td>
@@ -58,7 +61,7 @@
 
             </tr>
 
-        </div>
+         </div>
 
 
         <!--<tr> <td> <p th:text="${result}"></p> </td> </tr>-->

@@ -8,6 +8,6 @@ import java.util.List;
  */
 public interface TransactionRepository extends CrudRepository<Transaction, Integer>{
 
-   /* public List<Transaction> findAllByAcctNumber(Integer acctNumber);*/
+    public List<Transaction> findAllByAcctNumber(Integer acctNumber);
 
 }

@@ -13,18 +13,32 @@
     <title>Title</title>
 </head>
 <body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="/add">Make a transaction</a>
+            <a class="navbar-brand" href="/balance">Check balance</a>
+            <a class="navbar-brand" href="/logout">Log out</a>
+        </div>
+
+
+
+    </div><!-- /.container-fluid -->
+</nav>
 <div class = "container">
     <header><h1>Make a Transaction</h1> </header>
 </div>
 <div class="container">
-    <form th:action = "@{/logout}" method = "post">
-        <input type="submit" value = "Logout"/>
 
-    </form>
-    <form th:action = "@{/balance}" method = "post">
-        <input type="submit" value = "Check balance"/>
-
-    </form>
 
 <form th:action = "@{/addsubmit}" th:object = "${transaction}" method = "post">
     <div class="form-group">
