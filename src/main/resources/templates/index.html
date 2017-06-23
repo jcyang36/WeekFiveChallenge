@@ -19,7 +19,18 @@
     <form th:action = "@{/logout}" method = "post">
     <input type="submit" value = "Logout"/>
 
-</form></header>
+</form>
+    <form th:action = "@{/add}" method = "post">
+        <input type="submit" value = "Make a Transaction"/>
+
+    </form>
+    <form th:action = "@{/balance}" method = "post">
+        <input type="submit" value = "Check balance"/>
+
+    </form>
+</header>
+
+
 
 </div>
 
@@ -33,12 +44,26 @@
 
         <div th:each = "transaction: ${transactionList}">
             <tr>
-                <td >  <p th:utext= "${transaction.actionType+' of &nbsp;'+transaction.amount + '&lt;br/&gt;' + transaction.reason} " height="80">Transaction  </p> </td>
+                <td >  <p th:utext = "${transaction.actionType+' of &nbsp;'+transaction.amount + '&lt;br/&gt;' + transaction.reason} " height="80">Transaction  </p>
+
+
+                </td>
 
 
             </tr>
 
         </div>
+
+
+      <!--  <div th:each = "transaction: ${transactionList}">
+            <tr>
+                <td>
+            <p th:with = "result=result+${transaction.amount}"> Result</p>
+            <span th:text = "${result}"> Result</span>
+                </td>
+            </tr>
+        </div>
+        -->
 
 
     </table>

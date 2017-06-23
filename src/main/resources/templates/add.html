@@ -21,7 +21,10 @@
         <input type="submit" value = "Logout"/>
 
     </form>
+    <form th:action = "@{/balance}" method = "post">
+        <input type="submit" value = "Check balance"/>
 
+    </form>
 
 <form th:action = "@{/addsubmit}" th:object = "${transaction}" method = "post">
     <div class="form-group">

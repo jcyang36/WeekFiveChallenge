@@ -18,6 +18,11 @@ public class Transaction {
     private float amount;
     private String reason;
     private String actionType;
+    private float balance;
+
+
+
+
 
     public int getId() {
         return id;
@@ -60,5 +65,12 @@ public class Transaction {
     }
 
 
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
+    }
 
 }

@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TransactionController {
 
-
+private float depositSum=0;
+private float withdrawalSum=0;
+public float balance;
 
         @Autowired
         private TransactionRepository transactionRepository;
@@ -34,12 +36,35 @@ public class TransactionController {
 
         @PostMapping("/addsubmit")
         public String addSubmit(@ModelAttribute Transaction transaction, Model model) {
-            model.addAttribute(new Transaction());
+           /* model.addAttribute(new Transaction());*/
+           /*To add a record to a table, use save(transaction)*/
             transactionRepository.save(transaction);
             Iterable<Transaction> transactionList = transactionRepository.findAll();
             model.addAttribute("transactionList", transactionList);
 
-            return "index";
+            return "redirect:/";
+        }
+        @PostMapping("/balance")
+        public String goBalance(@ModelAttribute Transaction transaction, Model model) {
+            /*model.addAttribute(new Transaction());*/
+
+            Iterable<Transaction> transactionList = transactionRepository.findAll();
+            model.addAttribute("transactionList", transactionList);
+            for (Transaction t :
+                    transactionList) {
+                if (t.getAcctNumber() == 100) {
+                    if (
+                            t.getActionType().equalsIgnoreCase("deposit")) {
+                        depositSum += t.getAmount();
+                    } else if (
+                            t.getActionType().equalsIgnoreCase("withdrawal")) {
+                        withdrawalSum += t.getAmount();
+                    }
+                }
+                 balance=depositSum - withdrawalSum;
+                t.setBalance(balance);
+            }
+            return "balance";
         }
 
 
