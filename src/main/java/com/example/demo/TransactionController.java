@@ -50,8 +50,11 @@ public float balance;
 
             Iterable<Transaction> transactionList = transactionRepository.findAll();
             model.addAttribute("transactionList", transactionList);
+            depositSum=0;
+            withdrawalSum=0;
             for (Transaction t :
                     transactionList) {
+
                 if (t.getAcctNumber() == 100) {
                     if (
                             t.getActionType().equalsIgnoreCase("deposit")) {
